@@ -76,6 +76,7 @@ export const MovieGrid = ({
 						layout={layout} 
 						header={header}
 						itemTemplate={itemTemplate}
+						first={ first }
 						lazy
 						paginator 
 						rows={perPage}

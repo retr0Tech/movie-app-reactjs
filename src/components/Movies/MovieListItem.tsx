@@ -3,9 +3,10 @@ import { Button } from 'primereact/button';
 import { Link } from "react-router-dom";
 import  defaultImg from '../../assets/defaultImg.png';
 import FavoriteMovie from "../FavoriteMarker";
+import { Movie } from "../../models/movies/movie";
 
 export const MovieListItem = () => {
-	return (movie: any) => {
+	return (movie: Movie) => {
 		if(movie)
 		{
 			return (<div className="col-12">
@@ -23,7 +24,10 @@ export const MovieListItem = () => {
 					<div className="product-description" ><p >{movie.overview}</p></div>
 					<Rating value={movie.vote_average /2} readOnly cancel={false}></Rating>
 					<p>{movie.release_date}</p>
-					<FavoriteMovie movie={movie}></FavoriteMovie>
+					<div className="favorite-marker">
+						<FavoriteMovie movie={movie}></FavoriteMovie>
+						<p className="description">{movie.isFavorite ?  'Remove from favorites' : 'Mark as favorite'}</p>
+					</div>
 				</div>
 				<div className="product-list-action">
 					<span className="product-price">{movie.vote_average}/10</span>

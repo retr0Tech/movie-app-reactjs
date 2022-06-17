@@ -202,3 +202,12 @@
         transform: rotate(360deg);
     }
 }
+
+.favorite-marker {
+    display: flex;
+    justify-content: center;
+}
+
+.favorite-marker .description {
+    margin-left: 10px !important;
+}
