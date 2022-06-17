@@ -52,8 +52,8 @@ export const MovieGrid = ({
                 <div className="col-5" style={{textAlign: 'left'}}>
                     <Dropdown value={ sortOption } options={ sortOptions } optionLabel="label" placeholder="Sort By" onChange={onSortChange}/>
                 </div>
-                <div className="col-6" style={{textAlign: 'right'}}>
-                    <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
+                <div className="col-6" style={{textAlign: 'right', color: '#05C4E8'}}>
+                    <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} style={{ color: '#05C4E8'}}/>
                 </div>
             </div>
         );

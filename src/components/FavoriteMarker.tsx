@@ -25,12 +25,12 @@ export const FavoriteMovie = ({
         });
     }
     const iconClassName = movie.isFavorite ?  'pi-star-fill' : 'pi-star';
-
+	
     return (
         <i
             className={ `pi ${iconClassName}` }
             onClick={ () => handleMarkAsFavorite(movie) }
-            style={ { cursor: 'pointer', fontSize: '1.5rem' } }
+            style={ { cursor: 'pointer', fontSize: '1.5rem', color: 'F6BE00'} }
         ></i>
     );
 }
