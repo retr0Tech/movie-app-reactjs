@@ -47,6 +47,48 @@ stages:
     - script: |
         echo "Deliver artifact using build tool"
       displayName: 'Deliver Artifact'
+- stage: Dev_Env_Deploy
+  displayName: 'Deploy to Dev Environment'
+  dependsOn: Deliver
+  jobs:
+  - job: Deploy_to_Dev_Env
+    displayName: 'Deploy to Dev Environment'
+    steps:
+    - download: current
+      artifact: drop
+      displayName: 'Download Artifact'
+    - script: |
+        echo "Deploy artifact to Dev environment"
+      displayName: 'Deploy to Dev Environment'
+
+
+- stage: QAT_Env_Deploy
+  displayName: 'Deploy to QAT Environment'
+  dependsOn: Deliver
+  jobs:
+  - job: Deploy_to_QAT_Env
+    displayName: 'Deploy to QAT Environment'
+    steps:
+    - download: current
+      artifact: drop
+      displayName: 'Download Artifact'
+    - script: |
+        echo "Deploy artifact to QAT environment"
+      displayName: 'Deploy to QAT Environment'
+
+- stage: Staging_Env_Deploy
+  displayName: 'Deploy to Staging Environment'
+  dependsOn: Deliver
+  jobs:
+  - job: Deploy_to_Staging_Env
+    displayName: 'Deploy to Staging Environment'
+    steps:
+    - download: current
+      artifact: drop
+      displayName: 'Download Artifact'
+    - script: |
+        echo "Deploy artifact to Staging environment"
+      displayName: 'Deploy to Staging Environment'
 
 - stage: Production_Env_Deploy
   displayName: 'Deploy to Production Environment'
