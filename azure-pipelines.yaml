@@ -9,19 +9,55 @@ pool:
 variables:
   node_version: '14.x'
 
-jobs:
-- job: Build_and_Test
-  displayName: 'Build and Test ReactJS app'
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: $(node_version)
-    displayName: 'Install Node.js'
+stages:
+- stage: Build
+  displayName: 'Build and Test'
+  jobs:
+  - job: Build_and_Test
+    displayName: 'Build and Test ReactJS app'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: $(node_version)
+      displayName: 'Install Node.js'
+    - script: |
+        npm install
+        npm run build
+      displayName: 'Compile ReactJS app'
+    - script: |
+        echo "No tests to run"
+      displayName: 'Test ReactJS app'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
-  - script: |
-      npm install
-      npm run build
-    displayName: 'Compile ReactJS app'
-  - script: |
-       echo "No tests to run"
-    displayName: 'Test ReactJS app'
+- stage: Deliver
+  displayName: 'Deliver Artifact'
+  dependsOn: Build
+  jobs:
+  - job: Deliver_Artifact
+    displayName: 'Deliver Artifact'
+    steps:
+    - download: current
+      artifact: drop
+      displayName: 'Download Artifact'
+    - script: |
+        echo "Deliver artifact using build tool"
+      displayName: 'Deliver Artifact'
+
+- stage: Production_Env_Deploy
+  displayName: 'Deploy to Production Environment'
+  dependsOn: Deliver
+  jobs:
+  - job: Deploy_to_Production_Env
+    displayName: 'Deploy to Production Environment'
+    steps:
+    - download: current
+      artifact: drop
+      displayName: 'Download Artifact'
+    - script: |
+        echo "Deploy artifact to Production environment"
+      displayName: 'Deploy to Production Environment'
