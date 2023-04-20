@@ -9,6 +9,7 @@ import { applyMoviesFilters, getMovies, getMoviesByPage } from '../services/movi
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { selectFavoriteMoviesFilter, selectMoviesFilter, setFavoriteMoviesFilter, setMoviesFilter } from '../store/movies/movies-filter-slice';
 import { getMoviesAsync, selectFavoriteMovies, selectMovies } from '../store/movies/movies-slice';
+/*New imports */
 import { Card } from 'primereact/card';
 import { Panel } from 'primereact/panel';
 import { Image } from 'primereact/image';
@@ -80,6 +81,7 @@ export const Home = () => {
                     isLoading={ false }
                     onChangeFilter={ handleChangeFavoriteMoviesFilter }></MovieGrid>
 				</TabPanel>
+                /*New Tab */
                 <TabPanel header="About" leftIcon="pi pi-star">
                     <Panel header="Developers">
                         <TabView>
