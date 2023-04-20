@@ -1,7 +1,7 @@
 trigger:
 - main
 
-pool: Hosted Agent
+pool: movie-pool
 
 variables:
   node_version: '14.x'
