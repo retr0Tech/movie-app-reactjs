@@ -9,6 +9,7 @@ import { applyMoviesFilters, getMovies, getMoviesByPage } from '../services/movi
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { selectFavoriteMoviesFilter, selectMoviesFilter, setFavoriteMoviesFilter, setMoviesFilter } from '../store/movies/movies-filter-slice';
 import { getMoviesAsync, selectFavoriteMovies, selectMovies } from '../store/movies/movies-slice';
+import { Card } from 'primereact/card';
 
 export const Home = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -56,6 +57,10 @@ export const Home = () => {
     
     return ( 
 		<div className = "Home">
+            <div className="card">
+            <Card title="Centennial Movies">
+            </Card>
+        </div>
 			<TabView className="tabview-header-icon" activeIndex={ activeIndex } onTabChange={ (e) => setActiveIndex(e.index) }>
 				<TabPanel header="Grid" leftIcon="pi pi-list">
 					<MovieGrid movies={ movies }
