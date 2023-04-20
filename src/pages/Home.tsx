@@ -10,6 +10,10 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { selectFavoriteMoviesFilter, selectMoviesFilter, setFavoriteMoviesFilter, setMoviesFilter } from '../store/movies/movies-filter-slice';
 import { getMoviesAsync, selectFavoriteMovies, selectMovies } from '../store/movies/movies-slice';
 import { Card } from 'primereact/card';
+import { Panel } from 'primereact/panel';
+import { Image } from 'primereact/image';
+
+
 
 export const Home = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -75,6 +79,26 @@ export const Home = () => {
                     moviesFilter={ favoriteMoviesFilter }
                     isLoading={ false }
                     onChangeFilter={ handleChangeFavoriteMoviesFilter }></MovieGrid>
+				</TabPanel>
+                <TabPanel header="About" leftIcon="pi pi-star">
+                    <Panel header="Developers">
+                        <TabView>
+                            <TabPanel header="Ruiz Melo, Elliot">
+                                <p className="m-0">
+                                    Student ID:
+                                </p>
+                                <Image src="https://media.licdn.com/dms/image/D5603AQHF6jqvdXvU8A/profile-displayphoto-shrink_800_800/0/1673641008078?e=2147483647&v=beta&t=1X1D1wjgOlkrtarTCdCJzmv7KTfk-maTIlPA-wn9PWQ" alt="Image" width="250" />
+                                
+                            </TabPanel>
+                            <TabPanel header="Molina Acosta, Carlos">
+                                <p className="m-0">
+                                Student ID: 301232974
+                                </p>
+                                <Image src="https://media.licdn.com/dms/image/D5603AQEMW2L8UZwbNA/profile-displayphoto-shrink_400_400/0/1681969864725?e=1687392000&v=beta&t=gNyvVMhNe22n7-kd5Nruas0Dl9IrhpaLQr2ET4fnfic" alt="Image" width="250" />
+                            </TabPanel>
+                        </TabView>
+                    </Panel>
+         
 				</TabPanel>
 			</TabView>
                 <Card title="© Centennial College 2023">
