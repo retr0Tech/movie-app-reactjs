@@ -1,7 +1,10 @@
 trigger:
 - main
 
-pool: movie-pool
+pool:
+  name: movie-pool
+  demands:
+  - agent.version -gtVersion 3.218.0
 
 variables:
   node_version: '14.x'
@@ -19,7 +22,6 @@ jobs:
       npm install
       npm run build
     displayName: 'Compile ReactJS app'
-
   - script: |
       npm run test
     displayName: 'Test ReactJS app'
