@@ -1,8 +1,7 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: movie-pool
 
 variables:
   node_version: '14.x'
