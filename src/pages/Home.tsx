@@ -58,9 +58,9 @@ export const Home = () => {
     return ( 
 		<div className = "Home">
             <div className="card">
-            <Card title="Centennial Movies">
-            </Card>
-        </div>
+                <Card title="Centennial Movies">
+                </Card>
+            </div>
 			<TabView className="tabview-header-icon" activeIndex={ activeIndex } onTabChange={ (e) => setActiveIndex(e.index) }>
 				<TabPanel header="Grid" leftIcon="pi pi-list">
 					<MovieGrid movies={ movies }
@@ -77,6 +77,8 @@ export const Home = () => {
                     onChangeFilter={ handleChangeFavoriteMoviesFilter }></MovieGrid>
 				</TabPanel>
 			</TabView>
+                <Card title="© Centennial College 2023">
+                </Card>
 		</div>
     );
 }
