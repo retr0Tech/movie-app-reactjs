@@ -3,8 +3,6 @@ trigger:
 
 pool:
   name: Default
-  demands:
-  - agent.version -gtVersion 3.218.0
 
 variables:
   node_version: '14.x'
@@ -30,7 +28,7 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact'
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/**'
         ArtifactName: 'drop'
         publishLocation: 'Container'
 - stage: Deliver
@@ -41,7 +39,7 @@ stages:
     displayName: 'Deliver Artifact'
     steps:
     - download: current
-      artifact: drop
+      artifact: $(Build.ArtifactName)
       displayName: 'Download Artifact'
     - script: |
         echo "Deliver artifact using build tool"
