@@ -28,7 +28,7 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact'
       inputs:
-        PathtoPublish: '/Users/retr0tech/Downloads/movie-agent/_work/3/**'
+        PathtoPublish: '/Users/retr0tech/Downloads/movie-agent/_work/3/'
         ArtifactName: 'drop'
         publishLocation: 'Container'
 - stage: Deliver
