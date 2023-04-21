@@ -39,7 +39,7 @@ stages:
     displayName: 'Deliver Artifact'
     steps:
     - download: current
-      artifact: $(Build.ArtifactName)
+      artifact: drop
       displayName: 'Download Artifact'
     - script: |
         echo "Deliver artifact using build tool"
