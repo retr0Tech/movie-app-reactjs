@@ -33,7 +33,14 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
-
+  - job: Deliver
+    displayName: 'Deliver Artifact'
+    steps:
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(System.DefaultWorkingDirectory)/build'
+        artifactName: 'drop'
+        publishLocation: 'Container'
 - stage: Deliver
   displayName: 'Deliver Artifact'
   dependsOn: Build
