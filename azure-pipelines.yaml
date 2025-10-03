@@ -25,6 +25,7 @@ stages:
     - script: |
         echo "No tests to run"
       displayName: 'Test ReactJS app'
+
 #     - task: PublishBuildArtifacts@1
 #       displayName: 'Publish Artifact'
 #       inputs:
@@ -57,6 +58,7 @@ stages:
 #     - script: |
 #         echo "Deploy artifact to Dev environment"
 #       displayName: 'Deploy to Dev Environment'
+
 
 
 # - stage: QAT_Env_Deploy
